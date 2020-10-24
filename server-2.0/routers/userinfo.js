@@ -25,6 +25,21 @@ router.post('/adduserinfo', info,async (req, res) => {
     }
 })
 
+router.get('/getuserinfo/:id', async (req, res) => {
+    var id = req.params.id ;
+    try {
+        var users;
+        if (id == 'all')
+            users = await User.find({})
+        else 
+            users = await User.find({_id: id})
+        res.send(users);
+    } catch(e){
+        console.log(e);
+        res.send(e);
+    }
+})
+
 router.post('/addserviceincharge', async(req, res) => {
     try{
         const {name, source, destination, contact} = req.body;
@@ -32,6 +47,21 @@ router.post('/addserviceincharge', async(req, res) => {
         await newuser.save();
         res.send(newuser)
     } catch (e) {
+        console.log(e);
+        res.send(e);
+    }
+})
+
+router.get('/getserviceincharge/:id', async (req, res) => {
+    var id = req.params.id ;
+    try {
+        var users;
+        if (id == 'all')
+            users = await Worker.find({})
+        else 
+            users = await Worker.find({_id: id})
+        res.send(users);
+    } catch(e){
         console.log(e);
         res.send(e);
     }
