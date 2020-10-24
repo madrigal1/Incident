@@ -7,7 +7,7 @@ const ngoSchema = mongoose.Schema({
   location: {type: String},
   ratings: {type: Number, default : 0},
   comments : [{userinfo : {type: mongoose.ObjectId, ref: 'User'}}],
-  parcelsincollections : [{total : {type: Number}, userInfo : {type: mongoose.ObjectId, ref: 'User'}}]
+  parcelsincollections : [{total : {type: Number, default: 0}, userInfo : {type: mongoose.ObjectId, ref: 'User'}}]
 })
 
 module.exports = mongoose.model('NGO', ngoSchema)
