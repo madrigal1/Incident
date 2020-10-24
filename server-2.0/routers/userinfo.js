@@ -38,7 +38,4 @@ router.post('/addserviceincharge', async(req, res) => {
 })
 
 
-
-
-
 module.exports = router;

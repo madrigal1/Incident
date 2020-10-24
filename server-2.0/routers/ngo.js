@@ -11,7 +11,8 @@ router.post('/addngos', async (req, res) => {
     const {name, location, ratings} = req.body;
     try {
         const newngo = await new NGO({name, location, ratings})
-        
+        await newngo.save();
+        res.send(newngo)
     } catch (e) {
         console.log(e);
         res.send(e);
