@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const worker = require('./service-worker')
+
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     googleId: {
@@ -18,7 +20,8 @@ const userSchema = mongoose.Schema({
     token : {type: String},
     isAdministrator : {type: Boolean, required: false, default : false},
     location : {type: String},
-    donationtype : [ {Description : {type : String}, isMoney : {type: Boolean}}],
+    donationtype : [{Description : {type : String}, isMoney : {type: Boolean}}],
+    personincharge: {type: mongoose.ObjectId, ref: 'worker'}
 });
 
 
