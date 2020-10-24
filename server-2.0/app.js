@@ -5,3 +5,20 @@ const passport = require('passport')
 
 // Loading Database 
 require('./database/mongoose')
+
+require('./config/passport-setup')
+
+const app = express()
+
+const PORT = process.env.PORT || 3000 
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cors())
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(require('./routers/auth'))
+
+app.listen(PORT, console.log(`Server Running on Port ${PORT}`))
