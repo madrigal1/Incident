@@ -16,8 +16,9 @@ const userSchema = mongoose.Schema({
         match: /^([7-9][0-9]{9})$/g
     },
     token : {type: String},
-    isAdministrator : {type: Boolean, required: false,default : false}
-    
+    isAdministrator : {type: Boolean, required: false, default : false},
+    location : {type: String},
+    donationtype : [ {Description : {type : String}, isMoney : {type: Boolean}}],
 });
 
 
