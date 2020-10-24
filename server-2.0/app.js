@@ -20,5 +20,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(require('./routers/auth'))
+app.use('/user', require('./routers/userinfo'))
 
 app.listen(PORT, console.log(`Server Running on Port ${PORT}`))
