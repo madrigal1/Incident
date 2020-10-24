@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const worker = require('./service-worker')
+const ngo = require('./ngo')
 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -22,7 +23,8 @@ const userSchema = mongoose.Schema({
     location : {type: String},
     donationtype : [{Description : {type : String}, isMoney : {type: Boolean}}],
     personincharge: {type: mongoose.ObjectId, ref: 'worker'},
-    destination : {type: String}
+    destination : {type: String},
+    ngoChosen : {type: String}
 });
 
 

@@ -11,11 +11,12 @@ router.post('/adduserinfo', info,async (req, res) => {
     try {
         const user = await User.findOne({name: req.user.name})
         console.log(user)
-        console.log(contact, location, donationtype, destination)
+        console.log(contact, location, donationtype, destination, ngoChosen)
         user.contact = contact
         user.location = location
         user.donationtype = donationtype
         user.destination = destination
+        user.ngoChosen = ngoChosen
         await user.save();
         res.send(user)
     } catch(e) {
@@ -35,6 +36,8 @@ router.post('/addserviceincharge', async(req, res) => {
         res.send(e);
     }
 })
+
+
 
 
 
