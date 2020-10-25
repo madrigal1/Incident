@@ -27,7 +27,7 @@ router.get('/assignservice/:id', async(req, res) => {
     }
 })
 
-router.post('/postparcelsincollections', info,async (req, res) => {
+router.post('/postcommentsforngo', info,async (req, res) => {
     const reviews = req.body.comments;
     try {
         const user = await User.findById(req.user._id)
