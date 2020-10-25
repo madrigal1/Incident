@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
     isAdministrator : {type: Boolean, required: false, default : false},
     location : {type: String},
     donationtype : [{Description : {type : String}, isMoney : {type: Boolean}}],
-    personincharge: {type: mongoose.ObjectId, ref: 'worker'},
+    personincharge: {type: mongoose.ObjectId, ref: worker},
     destination : {type: String},
     ngoChosen : {type: String}
 });

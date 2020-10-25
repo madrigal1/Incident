@@ -20,11 +20,15 @@ router.get('/assignservice/:id', async(req, res) => {
         
         await user[0].populate('personincharge').execPopulate()
         console.log(user);
-        res.send(`Hello World`)
+        res.send(user)
     } catch (e){
         console.log(e);
         res.send(e);
     }
+})
+
+router.get('/getaccountsforngo/:id', async (req, res) => {
+    
 })
 
 module.exports = router;
