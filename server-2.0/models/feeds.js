@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const User = require('./users')
 
 const feedsSchema = mongoose.Schema({
     feeds : {
@@ -6,7 +7,8 @@ const feedsSchema = mongoose.Schema({
     },
     incharge : {
         type: String
-    }
+    },
+    userinfo : {type: mongoose.ObjectId, ref: User}
 })
 
 module.exports = mongoose.model('Feeds', feedsSchema)
