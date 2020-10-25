@@ -50,9 +50,17 @@ async function calculateRatings (ngoid){
         console.log(ngo)
         commentsection = ngo.comments;
         var sum = 0;
-        commentsection.forEach((comment) => sum += stars)
-        console.log(sum/commentsection.length)
-        return (sum/commentsection.length)
+        var length = 0;
+        commentsection.forEach((comment) => {
+            if (comment.stars){
+                sum += comment.stars
+                length++;
+            }
+        })
+        console.log(sum/length)
+        ngo.ratings = sum/length;
+        await ngo.save()
+        return (sum/length)
     } catch (e) {
         console.log(e);
         return (e)
@@ -62,9 +70,29 @@ async function calculateRatings (ngoid){
 router.get('/getNGOratings/:id', async (req, res) => {
     var id = req.params.id
     try {
-
+        console.log(calculateRatings(id));
+        res.send(calculateRatings(id))
     } catch (e) {
-        
+        res.send(e);
+    }
+})
+
+router.get('/addtoparcels', info, async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id)
+        var ngo = await NGO.findOne({name: user.ngoChosen})
+        var template = {userInfo : req.user._id} 
+        ngo.parcelsincollections.push(template)  
+        if(!user.donationtype){
+            ngo.parcelsincollections.userInfo = req.user._id 
+        }
+        await ngo.populate('parcelsincollections.userInfo').execPopulate()
+        await ngo.save();
+        console.log(ngo);
+        res.send(ngo);
+    } catch (e) {
+        console.log(e);
+        res.send(e);
     }
 })
 
