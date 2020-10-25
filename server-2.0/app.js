@@ -24,4 +24,6 @@ app.use('/user', require('./routers/userinfo'))
 app.use('/ngo', require('./routers/ngo'))
 app.use('/comp', require('./routers/computation'))
 app.use('/feeds', require('./routers/feeds'))
+app.use('/stripe', require('./routers/stripe'))
+
 app.listen(PORT, console.log(`Server Running on Port ${PORT}`))
